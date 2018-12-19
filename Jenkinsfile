@@ -39,8 +39,8 @@ pipeline {
               stage('Create Image Builder') {
                 when {
                   expression {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($DEV_PROJECT) {
                         return !openshift.selector("bc", "tasks").exists();
                       }
                     }
@@ -48,8 +48,8 @@ pipeline {
                 }
                 steps {
                   script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($DEV_PROJECT) {
                         openshift.newBuild("--name=tasks", "--image-stream=jboss-eap70-openshift:1.5", "--binary=true")
                       }
                     }
@@ -62,8 +62,8 @@ pipeline {
                   sh "cp target/openshift-tasks.war oc-build/deployments/ROOT.war"
 
                   script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($DEV_PROJECT) {
                         openshift.selector("bc", "tasks").startBuild("--from-dir=oc-build", "--wait=true")
                       }
                     }
@@ -73,8 +73,8 @@ pipeline {
               stage('Create DEV') {
                 when {
                   expression {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($DEV_PROJECT) {
                         return !openshift.selector('dc', 'tasks').exists()
                       }
                     }
@@ -82,8 +82,8 @@ pipeline {
                 }
                 steps {
                   script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($DEV_PROJECT) {
                         def app = openshift.newApp("tasks:latest")
                         app.narrow("svc").expose();
 
@@ -103,8 +103,8 @@ pipeline {
               stage('Deploy DEV') {
                 steps {
                   script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($DEV_PROJECT) {
                         openshift.selector("dc", "tasks").rollout().latest();
                       }
                     }
@@ -114,8 +114,8 @@ pipeline {
               stage('Create SIT Image') {
                 steps {
                   script {
-                    openshift.withCluster() {
-                      openshift.tag("${env.DEV_PROJECT}/tasks:latest", "${env.SIT_PROJECT}/tasks:latest")
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.tag("${$DEV_PROJECT}/tasks:latest", "${$SIT_PROJECT}/tasks:latest")
                     }
                   }
                 }
@@ -123,8 +123,8 @@ pipeline {
               stage('Deploy SIT') {
                 steps {
                   script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.SIT_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($SIT_PROJECT) {
                         if (openshift.selector('dc', 'tasks').exists()) {
                           openshift.selector('dc', 'tasks').delete()
                           openshift.selector('svc', 'tasks').delete()
@@ -146,8 +146,8 @@ pipeline {
               stage('Create UAT Image') {
                 steps {
                   script {
-                    openshift.withCluster() {
-                      openshift.tag("${env.SIT_PROJECT}/tasks:latest", "${env.UAT_PROJECT}/tasks:latest")
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.tag("${$SIT_PROJECT}/tasks:latest", "${$UAT_PROJECT}/tasks:latest")
                     }
                   }
                 }
@@ -155,8 +155,8 @@ pipeline {
               stage('Deploy UAT') {
                 steps {
                   script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.UAT_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($UAT_PROJECT) {
                         if (openshift.selector('dc', 'tasks').exists()) {
                           openshift.selector('dc', 'tasks').delete()
                           openshift.selector('svc', 'tasks').delete()
@@ -182,8 +182,8 @@ pipeline {
                   }
 
                   script {
-                    openshift.withCluster() {
-                      openshift.tag("${env.DEV_PROJECT}/tasks:latest", "${env.PROD_PROJECT}/tasks:${version}")
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.tag("${$DEV_PROJECT}/tasks:latest", "${$PROD_PROJECT}/tasks:${version}")
                     }
                   }
                 }
@@ -191,8 +191,8 @@ pipeline {
               stage('Deploy PROD') {
                 steps {
                   script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.PROD_PROJECT) {
+                    openshift.withCluster( 'myCluster' ) {
+                      openshift.withProject($PROD_PROJECT) {
                         if (openshift.selector('dc', 'tasks').exists()) {
                           openshift.selector('dc', 'tasks').delete()
                           openshift.selector('svc', 'tasks').delete()
