@@ -5,7 +5,7 @@ def UAT_PROJECT = 'demouat'
 def PROD_PROJECT = 'demoprod'
 pipeline {
       agent {
-              label 'jk-slave01'
+              label 'docker-jnlp-slave'
             }
             stages {
               stage('Build App') {
