@@ -21,7 +21,7 @@
   </mirrors>
   <profiles>
     <profile>
-      <id>nexus</id>
+      <id>nexus3</id>
       <!--Enable snapshots for the built in central repo to direct -->
       <!--all requests to nexus via the mirror -->
       <repositories>
@@ -44,6 +44,6 @@
   </profiles>
   <activeProfiles>
     <!--make the profile active all the time -->
-    <activeProfile>nexus</activeProfile>
+    <activeProfile>nexus3</activeProfile>
   </activeProfiles>
 </settings>

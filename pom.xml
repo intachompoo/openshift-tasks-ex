@@ -70,11 +70,11 @@
 	</pluginRepositories>
 	<distributionManagement>
 		<repository>
-			<id>nexus</id>
+			<id>nexus3</id>
 			<url>http://nexus-demotools.apps.180.222.156.219.xip.io/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>nexus</id>
+			<id>nexus3</id>
 			<url>http://nexus-demotools.apps.180.222.156.219.xip.io/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
