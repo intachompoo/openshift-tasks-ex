@@ -10,7 +10,7 @@ pipeline {
             stages {
               stage('Build App') {
                 steps {
-                  git branch: 'master', url: 'http://gogs-demotools.apps.180.222.156.219.xip.io/gogs/openshift-tasks-ex.git'
+                  git branch: 'master', url: 'https://github.com/intachompoo/openshift-tasks-ex.git'
                   script {
                       def pom = readMavenPom file: 'pom.xml'
                       version = pom.version
