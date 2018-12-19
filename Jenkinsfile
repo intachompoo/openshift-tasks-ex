@@ -15,7 +15,7 @@ pipeline {
                       def pom = readMavenPom file: 'pom.xml'
                       version = pom.version
                   }
-                  sh "${mvnCmd} install -DskipTests=true -DcreateChecksum=true"
+                  sh "${mvnCmd} clean install -DskipTests=true"
                 }
               }
               stage('Test') {
