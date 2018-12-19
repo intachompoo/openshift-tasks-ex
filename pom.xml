@@ -47,7 +47,7 @@
 	<repositories>
 		<repository>
 			<id>jboss-enterprise-maven-repository</id>
-			<url>https://maven.repository.redhat.com/ga/</url>
+			<url>https://maven.repository.redhat.com/earlyaccess/all/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -59,7 +59,7 @@
 	<pluginRepositories>
 		<pluginRepository>
 			<id>jboss-enterprise-maven-repository</id>
-			<url>https://maven.repository.redhat.com/ga/</url>
+			<url>https://maven.repository.redhat.com/earlyaccess/all/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
