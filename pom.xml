@@ -320,12 +320,12 @@
 				<repository>
 					<id>nexus3</id>
 					<name>Releases</name>
-					<url>http://nexus-demotools.apps.180.222.156.219.xip.io/repository/maven-releases</url>
+					<url>http://nexus-demotools.apps.180.222.156.219.xip.io/#browse/browse:maven-releases</url>
 				</repository>
 				<snapshotRepository>
 					<id>nexus3</id>
 					<name>Snapshot</name>
-					<url>http://nexus-demotools.apps.180.222.156.219.xip.io/repository/maven-snapshots</url>
+					<url>http://nexus-demotools.apps.180.222.156.219.xip.io/#browse/browse:maven-snapshots</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
