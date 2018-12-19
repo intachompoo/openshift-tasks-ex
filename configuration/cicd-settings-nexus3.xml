@@ -16,7 +16,8 @@
       <!--This sends everything else to /public -->
       <id>nexus</id>
       <mirrorOf>*</mirrorOf>
-      <url>http://10.88.66.105:8081/repository/maven-public</url>
+      <!-- <url>http://10.88.66.105:8081/repository/maven-public</url> -->
+      <url>http://10.88.66.105:8081/repository/redhat-ga/</url>
     </mirror>
   </mirrors>
   <profiles>
