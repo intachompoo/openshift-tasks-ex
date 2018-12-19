@@ -15,7 +15,7 @@ pipeline {
                       def pom = readMavenPom file: 'pom.xml'
                       version = pom.version
                   }
-                  sh "${mvnCmd} clean install -DskipTests=true -P nexus3"
+                  sh "${mvnCmd} install -DskipTests=true"
                   //sh "mvn install -DskipTests=true"
                 }
               }
