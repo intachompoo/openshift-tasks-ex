@@ -65,7 +65,7 @@ pipeline {
 
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.withProject($DEV_PROJECT) {
+                      openshift.withProject("$DEV_PROJECT") {
                         openshift.selector("bc", "tasks").startBuild("--from-dir=oc-build", "--wait=true")
                       }
                     }
@@ -76,7 +76,7 @@ pipeline {
                 when {
                   expression {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.withProject($DEV_PROJECT) {
+                      openshift.withProject("$DEV_PROJECT") {
                         return !openshift.selector('dc', 'tasks').exists()
                       }
                     }
@@ -85,7 +85,7 @@ pipeline {
                 steps {
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.withProject($DEV_PROJECT) {
+                      openshift.withProject("$DEV_PROJECT") {
                         def app = openshift.newApp("tasks:latest")
                         app.narrow("svc").expose();
 
@@ -106,7 +106,7 @@ pipeline {
                 steps {
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.withProject($DEV_PROJECT) {
+                      openshift.withProject("$DEV_PROJECT") {
                         openshift.selector("dc", "tasks").rollout().latest();
                       }
                     }
@@ -126,7 +126,7 @@ pipeline {
                 steps {
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.withProject($SIT_PROJECT) {
+                      openshift.withProject("$SIT_PROJECT") {
                         if (openshift.selector('dc', 'tasks').exists()) {
                           openshift.selector('dc', 'tasks').delete()
                           openshift.selector('svc', 'tasks').delete()
@@ -158,7 +158,7 @@ pipeline {
                 steps {
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.withProject($UAT_PROJECT) {
+                      openshift.withProject("$UAT_PROJECT") {
                         if (openshift.selector('dc', 'tasks').exists()) {
                           openshift.selector('dc', 'tasks').delete()
                           openshift.selector('svc', 'tasks').delete()
@@ -194,7 +194,7 @@ pipeline {
                 steps {
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.withProject($PROD_PROJECT) {
+                      openshift.withProject("$PROD_PROJECT") {
                         if (openshift.selector('dc', 'tasks').exists()) {
                           openshift.selector('dc', 'tasks').delete()
                           openshift.selector('svc', 'tasks').delete()
