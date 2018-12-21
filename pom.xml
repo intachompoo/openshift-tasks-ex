@@ -199,6 +199,9 @@
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${version.surefire.plugin}</version>
+				<configuration>
+               <useSystemClassLoader>false</useSystemClassLoader>
+        </configuration>
 			</plugin>
 			<!-- The WildFly plug-in deploys the WAR to a local JBoss EAP container -->
 			<!-- To use, run: mvn package wildfly:deploy -->
