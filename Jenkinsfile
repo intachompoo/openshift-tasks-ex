@@ -117,7 +117,7 @@ pipeline {
                 steps {
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.tag("${$DEV_PROJECT}/tasks:latest", "${$SIT_PROJECT}/tasks:latest")
+                      openshift.tag("${DEV_PROJECT}/tasks:latest", "${SIT_PROJECT}/tasks:latest")
                     }
                   }
                 }
@@ -149,7 +149,7 @@ pipeline {
                 steps {
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.tag("${$SIT_PROJECT}/tasks:latest", "${$UAT_PROJECT}/tasks:latest")
+                      openshift.tag("${SIT_PROJECT}/tasks:latest", "${UAT_PROJECT}/tasks:latest")
                     }
                   }
                 }
@@ -185,7 +185,7 @@ pipeline {
 
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.tag("${$DEV_PROJECT}/tasks:latest", "${$PROD_PROJECT}/tasks:${version}")
+                      openshift.tag("${DEV_PROJECT}/tasks:latest", "${PROD_PROJECT}/tasks:${version}")
                     }
                   }
                 }
