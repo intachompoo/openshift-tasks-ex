@@ -97,6 +97,19 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
+		<!-- Try to add dependency from error -->
+		<dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-core-asl</artifactId>
+        <version>1.9.13</version>
+        <scope>compile</scope> <!-- CHANGE HERE -->
+    </dependency>
+    <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>1.9.13</version>
+        <scope>compile</scope> <!-- CHANGE HERE -->
+    </dependency>
 		<!-- Import the CDI API, we use provided scope as the API is included in
 			JBoss EAP -->
 		<dependency>
