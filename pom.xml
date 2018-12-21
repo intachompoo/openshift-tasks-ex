@@ -94,6 +94,14 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<!-- Test add arquillian-bom -->
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.0.3.Final</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
