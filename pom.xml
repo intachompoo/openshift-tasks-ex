@@ -200,8 +200,12 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${version.surefire.plugin}</version>
 				<configuration>
-               <useSystemClassLoader>false</useSystemClassLoader>
-        </configuration>
+            <!-- see: https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class -->
+						<argLine>-Xmx1024m -Xms1024m -XX:MaxPermSize=512m -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+						<includes>
+							<include>**/*Test.java</include>
+						</includes>
+				</configuration>
 			</plugin>
 			<!-- The WildFly plug-in deploys the WAR to a local JBoss EAP container -->
 			<!-- To use, run: mvn package wildfly:deploy -->
