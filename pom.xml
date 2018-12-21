@@ -155,6 +155,7 @@
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
+			<version>${org.jboss.arquillian.junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
