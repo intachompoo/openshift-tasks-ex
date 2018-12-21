@@ -117,7 +117,7 @@ pipeline {
                 steps {
                   script {
                     openshift.withCluster( 'myCluster' ) {
-                      openshift.tag("${DEV_PROJECT}/tasks:latest", "${SIT_PROJECT}/tasks:latest")
+                      openshift.tag("$DEV_PROJECT/tasks:latest", "$SIT_PROJECT/tasks:latest")
                     }
                   }
                 }
