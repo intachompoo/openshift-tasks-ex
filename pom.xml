@@ -40,9 +40,6 @@
 		<!-- other plugin versions 2.19.1-->
 		<version.surefire.plugin>2.22.0</version.surefire.plugin>
 		<version.war.plugin>2.1.1</version.war.plugin>
-		<org.jboss.arquillian.junit.version>1.0.0.CR7</org.jboss.arquillian.junit.version>
-    <org.jboss.arquillian.spi.version>1.0.0.Alpha5</org.jboss.arquillian.spi.version>
-		<org.jboss.arquillian.bom.version>1.0.0.CR7</org.jboss.arquillian.bom.version>
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -155,26 +152,12 @@
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
-			<version>${org.jboss.arquillian.junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.protocol</groupId>
 			<artifactId>arquillian-protocol-servlet</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian</groupId>
-			<artifactId>arquillian-spi</artifactId>
-			<version>${org.jboss.arquillian.spi.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian</groupId>
-			<artifactId>arquillian-bom</artifactId>
-			<version>${org.jboss.arquillian.bom.version}</version>
-			<type>pom</type>
-			<scope>import</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
