@@ -10,11 +10,11 @@ pipeline {
             stages {
               stage('Build App') {
                 steps {
-                  git branch: 'master', url: 'https://github.com/intachompoo/openshift-tasks-ex.git'
-                  script {
-                      def pom = readMavenPom file: 'pom.xml'
-                      version = pom.version
-                  }
+                  //git branch: 'master', url: 'https://github.com/intachompoo/openshift-tasks-ex.git'
+                  //script {
+                      //def pom = readMavenPom file: 'pom.xml'
+                      //version = pom.version
+                  //}
                   sh "${mvnCmd} install -DskipTests=true"
                   //sh "mvn install -DskipTests=true"
                 }
